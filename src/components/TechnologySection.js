@@ -22,78 +22,112 @@ response = engine.generate(
     <section
       id="technology"
       ref={sectionRef}
-      className="relative py-32 bg-gradient-to-b from-kineton-dark to-kineton-black overflow-hidden"
+      className="relative py-32 bg-gradient-to-br from-kineton-dark via-kineton-black to-kineton-darker dark:from-kineton-dark dark:via-kineton-black dark:to-kineton-darker overflow-hidden"
     >
+      {/* Light mode */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:opacity-0 opacity-100" />
+      
+      {/* Grid */}
+      <div className="absolute inset-0 grid-pattern" />
+      
+      {/* Gradient accents */}
+      <div className="absolute top-1/4 left-0 w-[700px] h-[700px] bg-gradient-to-r from-kineton-cyan/12 to-transparent rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-0 w-[700px] h-[700px] bg-gradient-to-l from-kineton-purple/12 to-transparent rounded-full blur-3xl" />
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: -30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl sm:text-6xl font-bold font-heading text-kineton-white mb-6">
-            Built for <span className="text-gradient">Performance</span>, Designed for <span className="text-gradient">Developers</span>
+          <h2 className="text-6xl sm:text-7xl font-bold font-heading text-gray-900 dark:text-kineton-white mb-8 leading-tight">
+            Built for <span className="text-gradient">Performance</span>,<br />Designed for <span className="text-gradient-warm">Developers</span>
           </h2>
-          <p className="text-xl text-kineton-white/70 max-w-3xl mx-auto">
-            A three-layer architecture that seamlessly integrates from silicon to orchestration
+          <p className="text-2xl text-gray-700 dark:text-kineton-white/80 max-w-4xl mx-auto leading-relaxed">
+            A two-layer architecture seamlessly integrating from custom silicon to optimized runtime
           </p>
         </motion.div>
 
-        {/* Architecture Diagram */}
-        <div className="mb-16 space-y-6">
+        {/* 2-Layer Architecture Stack */}
+        <div className="max-w-5xl mx-auto mb-24 space-y-10">
+          {/* Layer 1: Lightsound Runtime */}
           <motion.div
-            className="p-8 bg-kineton-purple/10 border border-kineton-purple/30 rounded-xl transition-all duration-300"
-            initial={{ opacity: 0, x: -100 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            whileHover={{ borderColor: 'rgba(99, 102, 241, 0.6)' }}
+            className="p-12 bg-white dark:bg-gradient-to-br dark:from-kineton-cyan/15 dark:to-kineton-teal/10 backdrop-blur-md border-3 border-kineton-cyan/50 dark:border-kineton-cyan/50 rounded-3xl shadow-2xl transition-all duration-500"
+            initial={{ opacity: 0, x: -150, rotate: -3 }}
+            animate={isInView ? { opacity: 1, x: 0, rotate: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.3, type: 'spring' }}
+            whileHover={{
+              borderColor: 'rgba(15, 240, 252, 0.8)',
+              boxShadow: '0 30px 70px rgba(15, 240, 252, 0.3)',
+              scale: 1.02
+            }}
           >
             <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm text-kineton-purple font-semibold mb-2">LAYER 1: ORCHESTRATION</div>
-                <h3 className="text-3xl font-bold text-kineton-white mb-2">Fabric Intelligence</h3>
-                <p className="text-kineton-white/70">Multi-device coordination and workload distribution</p>
+              <div className="flex-1">
+                <div className="inline-block px-5 py-2 bg-kineton-cyan/15 dark:bg-kineton-cyan/20 border-2 border-kineton-cyan/50 rounded-full mb-5">
+                  <span className="text-kineton-cyan dark:text-kineton-cyan text-xs font-bold tracking-section-label">LAYER 1: MIDDLEWARE</span>
+                </div>
+                <h3 className="text-5xl font-bold font-heading text-gray-900 dark:text-kineton-white mb-4">
+                  Lightsound <span className="text-kineton-cyan">Runtime</span>
+                </h3>
+                <p className="text-gray-700 dark:text-kineton-white/80 text-xl leading-relaxed">
+                  Inference optimization, PyTorch integration, custom CUDA kernels, and quantization pipeline
+                </p>
               </div>
-              <div className="hidden md:flex w-16 h-16 bg-kineton-purple/20 rounded-full items-center justify-center border-2 border-kineton-purple/50">
-                <span className="text-kineton-purple text-2xl font-bold">1</span>
+              <div className="hidden lg:flex w-28 h-28 bg-kineton-cyan/20 dark:bg-kineton-cyan/20 rounded-3xl items-center justify-center border-3 border-kineton-cyan/60 ml-10">
+                <span className="text-kineton-cyan dark:text-kineton-cyan text-5xl font-bold">1</span>
               </div>
             </div>
           </motion.div>
 
+          {/* Connection visual */}
           <motion.div
-            className="p-8 bg-kineton-cyan/10 border border-kineton-cyan/30 rounded-xl transition-all duration-300"
-            initial={{ opacity: 0, x: -100 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            whileHover={{ borderColor: 'rgba(15, 240, 252, 0.6)' }}
+            className="flex justify-center"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.7 }}
           >
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm text-kineton-cyan font-semibold mb-2">LAYER 2: MIDDLEWARE</div>
-                <h3 className="text-3xl font-bold text-kineton-white mb-2">Lightsound Runtime</h3>
-                <p className="text-kineton-white/70">Inference optimization and framework integration</p>
-              </div>
-              <div className="hidden md:flex w-16 h-16 bg-kineton-cyan/20 rounded-full items-center justify-center border-2 border-kineton-cyan/50">
-                <span className="text-kineton-cyan text-2xl font-bold">2</span>
-              </div>
+            <div className="flex flex-col items-center">
+              <motion.div
+                className="w-1.5 h-20 bg-gradient-to-b from-kineton-cyan via-kineton-teal to-kineton-purple rounded-full"
+                animate={{ scaleY: [1, 1.3, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <motion.div
+                className="w-5 h-5 bg-kineton-teal rounded-full border-2 border-kineton-cyan"
+                animate={{ scale: [1, 1.6, 1], opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
             </div>
           </motion.div>
 
+          {/* Layer 2: VEO Cores */}
           <motion.div
-            className="p-8 bg-kineton-teal/10 border border-kineton-teal/30 rounded-xl transition-all duration-300"
-            initial={{ opacity: 0, x: -100 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            whileHover={{ borderColor: 'rgba(0, 212, 170, 0.6)' }}
+            className="p-12 bg-white dark:bg-gradient-to-br dark:from-kineton-purple/15 dark:to-kineton-amber/10 backdrop-blur-md border-3 border-kineton-purple/50 dark:border-kineton-purple/50 rounded-3xl shadow-2xl transition-all duration-500"
+            initial={{ opacity: 0, x: 150, rotate: 3 }}
+            animate={isInView ? { opacity: 1, x: 0, rotate: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.8, type: 'spring' }}
+            whileHover={{
+              borderColor: 'rgba(99, 102, 241, 0.8)',
+              boxShadow: '0 30px 70px rgba(99, 102, 241, 0.3)',
+              scale: 1.02
+            }}
           >
             <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm text-kineton-teal font-semibold mb-2">LAYER 3: SILICON</div>
-                <h3 className="text-3xl font-bold text-kineton-white mb-2">VEO Cores</h3>
-                <p className="text-kineton-white/70">Custom neural processing hardware</p>
+              <div className="flex-1">
+                <div className="inline-block px-5 py-2 bg-kineton-purple/15 dark:bg-kineton-purple/20 border-2 border-kineton-purple/50 rounded-full mb-5">
+                  <span className="text-kineton-purple dark:text-kineton-purple text-xs font-bold tracking-section-label">LAYER 2: SILICON</span>
+                </div>
+                <h3 className="text-5xl font-bold font-heading text-gray-900 dark:text-kineton-white mb-4">
+                  VEO <span className="text-kineton-purple">Cores</span>
+                </h3>
+                <p className="text-gray-700 dark:text-kineton-white/80 text-xl leading-relaxed">
+                  Custom RISC-V neural processing units, hardware acceleration, HBM integration, and PCIe Gen4 interfaces
+                </p>
               </div>
-              <div className="hidden md:flex w-16 h-16 bg-kineton-teal/20 rounded-full items-center justify-center border-2 border-kineton-teal/50">
-                <span className="text-kineton-teal text-2xl font-bold">3</span>
+              <div className="hidden lg:flex w-28 h-28 bg-kineton-purple/20 dark:bg-kineton-purple/20 rounded-3xl items-center justify-center border-3 border-kineton-purple/60 ml-10">
+                <span className="text-kineton-purple dark:text-kineton-purple text-5xl font-bold">2</span>
               </div>
             </div>
           </motion.div>
@@ -101,51 +135,71 @@ response = engine.generate(
 
         {/* Code Example */}
         <motion.div
-          className="bg-kineton-dark/80 rounded-2xl border border-kineton-teal/20 p-8"
-          initial={{ opacity: 0, y: 50 }}
+          className="mt-24 bg-white dark:bg-kineton-dark/80 backdrop-blur-sm rounded-3xl border-2 border-kineton-teal/40 dark:border-kineton-teal/40 p-12 shadow-2xl"
+          initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.9, delay: 1.2 }}
         >
-          <h3 className="text-2xl font-bold text-kineton-white mb-6">Developer Experience</h3>
+          <div className="flex items-center justify-between mb-10">
+            <h3 className="text-4xl font-bold font-heading text-gray-900 dark:text-kineton-white">
+              Developer <span className="text-gradient">Experience</span>
+            </h3>
+            <div className="flex space-x-2.5">
+              <div className="w-4 h-4 rounded-full bg-red-500" />
+              <div className="w-4 h-4 rounded-full bg-yellow-500" />
+              <div className="w-4 h-4 rounded-full bg-green-500" />
+            </div>
+          </div>
           
-          <div className="font-mono text-sm bg-kineton-black/80 rounded-xl p-6 overflow-x-auto">
+          <div className="font-mono text-base bg-gray-900 dark:bg-kineton-black/90 rounded-2xl p-10 border-2 border-gray-800 dark:border-kineton-teal/20">
             {codeExample.split('\n').map((line, index) => (
               <motion.div
                 key={index}
+                className="leading-loose"
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.3, delay: 1.0 + index * 0.05 }}
+                transition={{ duration: 0.3, delay: 1.4 + index * 0.04 }}
               >
                 {line.startsWith('#') ? (
-                  <span className="text-kineton-white/50">{line}</span>
+                  <span className="text-gray-500">{line}</span>
                 ) : line.includes('from') || line.includes('import') ? (
                   <span>
-                    <span className="text-kineton-purple">from</span>
-                    <span className="text-kineton-white"> lightsound </span>
-                    <span className="text-kineton-purple">import</span>
-                    <span className="text-kineton-cyan"> Engine, Model</span>
+                    <span className="text-purple-400">from</span>
+                    <span className="text-white"> lightsound </span>
+                    <span className="text-purple-400">import</span>
+                    <span className="text-cyan-300"> Engine, Model</span>
                   </span>
-                ) : line.includes('=') ? (
-                  <span className="text-kineton-white">{line}</span>
+                ) : line.includes('Engine') ? (
+                  <span className="text-white">
+                    engine = <span className="text-teal-400">Engine</span>(device=<span className="text-amber-400">"veo"</span>)
+                  </span>
+                ) : line.includes('Model.load') ? (
+                  <span className="text-white">
+                    model = Model.<span className="text-teal-400">load</span>(<span className="text-amber-400">"llama-7b"</span>, quantization=<span className="text-amber-400">"int8"</span>)
+                  </span>
+                ) : line.includes('generate') ? (
+                  <span className="text-white">
+                    response = engine.<span className="text-cyan-300">generate</span>(
+                  </span>
                 ) : line.includes('"') ? (
-                  <span className="text-kineton-cyan">{line}</span>
+                  <span className="text-gray-400">{line}</span>
                 ) : (
-                  <span className="text-kineton-white/80">{line}</span>
+                  <span className="text-gray-300">{line}</span>
                 )}
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap gap-5">
             <motion.button
-              className="px-6 py-2 bg-kineton-teal text-kineton-black font-semibold rounded-lg transition-all duration-300"
-              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(0, 212, 170, 0.3)' }}
+              className="px-10 py-4 bg-gradient-to-r from-kineton-teal to-kineton-cyan text-white font-bold text-lg rounded-xl shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.05, boxShadow: '0 20px 50px rgba(0, 212, 170, 0.4)' }}
               whileTap={{ scale: 0.95 }}
             >
               View Documentation
             </motion.button>
             <motion.button
-              className="px-6 py-2 border border-kineton-teal text-kineton-teal font-semibold rounded-lg transition-all duration-300"
+              className="px-10 py-4 border-3 border-kineton-teal dark:border-kineton-teal text-kineton-teal dark:text-kineton-teal font-bold text-lg rounded-xl transition-all duration-300 bg-white/50 dark:bg-transparent"
               whileHover={{ scale: 1.05, backgroundColor: 'rgba(0, 212, 170, 0.1)' }}
               whileTap={{ scale: 0.95 }}
             >
